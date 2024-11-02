@@ -1,14 +1,31 @@
-import express, { Express, Request, Response } from 'express'
+import { connectionAdmin } from "./database/connection"
+import AuthRoutes from './routes/auth.routes'
+import express, { Express } from 'express'
 import { PORT } from "../config.json"
+import path from 'path'
+import cors from 'cors'
 
+// Initialize Express App
 const App: Express = express()
 
-App.use(express.json())
+// Define the path to your public folder
+const publicPath = path.join(__dirname, '../public');
 
-App.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World!')
-})
+// Middlewares
+App.use(cors())                                   // CORS Policy
+App.use(express.json())                           // JSON Parser
+App.use(express.urlencoded({ extended: true }))   // URL Encoder
 
-App.listen(PORT, () => {
+// Routes
+App.use('/', express.static(publicPath))
+App.use("api/v1/auth", AuthRoutes)
+
+App.listen(PORT, async () => {
+  // Server Initialized
   console.log(`Server is running at http://localhost:${PORT}`)
+
+  // Sequelize Initialized
+  await connectionAdmin.authenticate()
+    .then(() => console.log("MySQL Database Connected Successfully"))
+    .catch(err => console.log(err))
 })

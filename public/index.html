@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend API Reference</title>
+    <style>
+        h1, h3, table {
+            text-align: center;
+        }
+
+        body {
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project "E" - Backend API Reference</h1>
+
+    <p>Brief Documentation for:<br/>
+        <ul>
+            <li>Authentication</li>
+            <li>Admin Panel</li>
+            <li>User Dashboard</li>
+            <li>Compatibility List</li>
+        </ul>
+    </p>
+
+    <h3>Authentication Routes: Reference Table</h3>
+
+    <table border="2" cellpadding="10" cellspacing="2" align="center" width="80%">
+        <thead>
+            <tr>
+                <td>Method</td>
+                <td>Route</td>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/api/v1/auth/signin</td>
+                <td>Sign in</td>
+            </tr>
+            <tr>
+                <td>PUT</td>
+                <td>/api/v1/auth/signup</td>
+                <td>Sign up</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/api/v1/auth/signout</td>
+                <td>Sign out</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/api/v1/auth/oauth</td>
+                <td>OAuth2</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
